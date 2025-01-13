@@ -1,7 +1,5 @@
-from math import inf
 
 def dijkstras(adj_list):
-
     weights = [i for i in range(len(adj_list))]
     visited = []
     to_visit = [0]
@@ -17,11 +15,18 @@ def dijkstras(adj_list):
 
     return weights[-1]
 
-def shortestDistanceAfterQueries(n, queries):
-    """
-    :type n: int
-    :type queries: List[List[int]]
-    :rtype: List[int]
+
+def shortestDistanceAfterQueries(n:int, queries:list[list[int]]):
+    """Calculates the shortest distance between the start and end cities after
+    each new road is added.
+
+    Arguments:
+        n : the number of cities the roads connect
+        queries : a list of the roads to be added [i]=[startcity, endcity]
+        
+    Returns:
+        answers (list): a list of the shortest distances after each new road 
+        added.
     """
     answers = []
     adj_list = {i:[i+1] for i in range(n-1)}
@@ -30,6 +35,7 @@ def shortestDistanceAfterQueries(n, queries):
     for start_node, end_node in queries:
         adj_list[start_node] += [end_node]
         answers.append(dijkstras(adj_list))
+
     return answers
 
 print(
