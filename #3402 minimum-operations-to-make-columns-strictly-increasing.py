@@ -1,6 +1,3 @@
-"""A fairly easy one where the most intuitive solution is the best one.
-"""
-
 def minimumOperations(grid: list[list[int]]) -> int:
     operations = 0
     for col in range(len(grid[0])):
